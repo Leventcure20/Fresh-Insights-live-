@@ -81,7 +81,7 @@ passport.use("local",
 passport.use("google", new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "https://localhost:3000/auth/google/dashboard",
+    callbackURL: "https://fresh-insights-live.onrender.com/auth/google/dashboard",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
 }, async  (accessToken, refreshToken, profile, cb) => {
 
