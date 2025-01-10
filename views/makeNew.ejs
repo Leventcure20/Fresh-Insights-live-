@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Post</title>
+    <header>
+        <%- include('partials/Navbar.ejs') %>
+    </header>
+    <style>
+        .rounded-box {
+            width: 500px; /* Increased width */
+            padding: 30px; /* Increased padding inside the box */
+            border: 2px solid black; /* Black border with 2px thickness */
+            background-color: white; /* White background */
+            border-radius: 15px; /* Rounded corners */
+            text-align: center; /* Centers text inside the box */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Optional: adds a subtle shadow */
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Increased spacing between elements */
+            height: 375px;
+        }
+
+        .title-box,
+        .content-box {
+            margin-bottom: 15px; /* Increased spacing below each box */
+        }
+
+        .title-box input,
+        .content-box textarea {
+            width: 100%; /* Full width of the parent */
+            padding: 15px; /* Increased padding inside inputs */
+            border: 1px solid black; /* Border for inputs */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 1.2rem; /* Increased text size */
+            box-sizing: border-box; /* Ensures padding does not exceed width */
+        }
+
+        .content-box textarea {
+            resize: none; /* Prevent resizing of the textarea */
+            height: 150px; /* Increased height for content box */
+        }
+
+        button {
+            width: 100%; /* Full width of the parent */
+            padding: 15px; /* Increased padding for the button */
+            background-color: black; /* Black background */
+            color: white; /* White text */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Slight rounding for the button */
+            font-size: 1.2rem; /* Increased font size for the button */
+            cursor: pointer; /* Show pointer on hover */
+        }
+
+        button:hover {
+            background-color: gray; /* Change color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 style="text-align: center;">Make a Post!</h1>
+        <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+            <div class="rounded-box">
+                <form action="/makepost" method="POST">
+                    <!-- Title Input -->
+                    <div class="title-box">
+                        <input type="text" id="title" name="title" placeholder="Enter your title">
+                    </div>
+                    
+                    <!-- Content Textarea -->
+                    <div class="content-box">
+                        <textarea id="content" name="content" placeholder="Enter your content"></textarea>
+                    </div>
+                    
+                    <!-- Post Button -->
+                    <button>
+                        Post
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

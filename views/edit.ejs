@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+    <header>
+        <%- include('partials/Navbar.ejs') %>
+    </header>
+    <style>
+        .rounded-box {
+            width: 500px;
+            padding: 30px;
+            border: 2px solid black;
+            background-color: white;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 375px;
+        }
+
+        .title-box,
+        .content-box {
+            margin-bottom: 15px;
+        }
+
+        .title-box input,
+        .content-box textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid black;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            box-sizing: border-box;
+        }
+
+        .content-box textarea {
+            resize: none;
+            height: 150px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 style="text-align: center;">Edit your post!</h1>
+        <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+            <div class="rounded-box">
+                <form action="/editpost/<%= post.blog_id %>?_method=PUT" method="POST">
+                    <!-- Title Input -->
+                    <div class="title-box">
+                        <input type="text" id="title" name="title" placeholder="Enter your title" value="<%= post.title %>">
+                    </div>
+                    
+                    <!-- Content Textarea -->
+                    <div class="content-box">
+                        <textarea id="content" name="content" placeholder="Enter your content"><%= post.content %></textarea>
+                    </div>
+                    
+                    <!-- Post Button -->
+                    <button type="submit">Edit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
