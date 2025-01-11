@@ -7,13 +7,12 @@ import dotenv from "dotenv";
 import session from 'express-session';
 import passport from 'passport';
 
-
-
-const app = express();
-const PORT = 3000;
-
 dotenv.config();
 
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Session configuration
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -21,6 +20,7 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24 }, // 1 day
 }));
 
+// Passport initialization
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -35,9 +35,10 @@ app.use("/", userRoutes);
 app.use("/", registerRoutes);
 app.use("/", loginRoutes);
 
-
-
 // Start the server
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    const host = process.env.NODE_ENV === "production"
+        ? "https://your-production-url.com"
+        : `http://localhost:${PORT}`;
+    console.log(`Server running on ${host}`);
 });
