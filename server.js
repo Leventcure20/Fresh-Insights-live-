@@ -38,7 +38,7 @@ app.use("/", loginRoutes);
 // Start the server
 app.listen(PORT, () => {
     const host = process.env.NODE_ENV === "production"
-        ? "https://your-production-url.com"
+        ? "https://fresh-insights-live.onrender.com"
         : `http://localhost:${PORT}`;
     console.log(`Server running on ${host}`);
 });
